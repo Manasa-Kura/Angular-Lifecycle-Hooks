@@ -3,7 +3,7 @@
     <input type="text" #inputEl>
     <button (click)="onBtnClicked(inputEl)">Submit</button>
     <app-demo [message]="inputVal">
-      <p #temp>This is projected content</p>
+      <p #temp>User entered Input:{{inputVal}}</p>
     </app-demo>
   </div>
 </div>
