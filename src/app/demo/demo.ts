@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,SimpleChange } from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-demo',
@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './demo.html',
   styleUrls: ['./demo.css']
 })
-export class Demo {
+export class Demo{
   title:string='Demo Component';
-  @Input() message:string='Hello';
+  @Input() message!:string;
   show=true;
   constructor()
   {
@@ -17,8 +17,9 @@ export class Demo {
     console.log(this.title);
     console.log(this.message);
   }
-  toggle()
+  ngOnChanges(changes:SimpleChange)
   {
-    this.show=!this.show;
+    console.log('ngOnChanges Hook called');
+    console.log(changes);
   }
 }
