@@ -1,4 +1,4 @@
-import { Component,Input,SimpleChange } from '@angular/core';
+import { Component,Input,OnChanges,SimpleChange, SimpleChanges,OnInit, viewChild, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-demo',
@@ -7,19 +7,25 @@ import { CommonModule } from '@angular/common';
   templateUrl: './demo.html',
   styleUrls: ['./demo.css']
 })
-export class Demo{
+export class Demo implements OnChanges,OnInit{
   title:string='Demo Component';
-  @Input() message!:string;
+  @Input() message!:string[];
+  @ViewChild('temp') tempPara!:ElementRef;
   show=true;
   constructor()
   {
     console.log('Demo component constructor called');
-    console.log(this.title);
-    console.log(this.message);
+    // console.log(this.title);
+    // console.log(this.message);
   }
-  ngOnChanges(changes:SimpleChange)
+  ngOnChanges(changes:SimpleChanges)
   {
     console.log('ngOnChanges Hook called');
-    console.log(changes);
+    // console.log(changes);
+  }
+  //adding ngOnInit
+  ngOnInit()
+  {
+    console.log('ngOnInit Hook called');
   }
 }
